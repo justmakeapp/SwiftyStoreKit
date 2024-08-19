@@ -61,7 +61,7 @@ extension PurchaseDetails: Purchased {
 }
 
 // Restored product
-public struct Purchase {
+public struct Purchase: Sendable {
     public let productId: String
     public let quantity: Int
     public let transaction: PaymentTransaction
@@ -78,7 +78,7 @@ public struct Purchase {
 }
 
 /// Purchased product
-public struct PurchaseDetails {
+public struct PurchaseDetails: Sendable {
     public let productId: String
     public let quantity: Int
     public let product: SKProduct
@@ -102,7 +102,7 @@ public protocol ReceiptValidator {
 }
 
 /// Payment transaction
-public protocol PaymentTransaction {
+public protocol PaymentTransaction: Sendable {
     var transactionDate: Date? { get }
     var transactionState: SKPaymentTransactionState { get }
     var transactionIdentifier: String? { get }
